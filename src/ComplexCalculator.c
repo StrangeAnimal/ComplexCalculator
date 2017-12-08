@@ -42,41 +42,6 @@ int mainmenu(){
 
 
 
-int main(int argc, char **argv)
-{
-
-	NumberInput();
-
-	switch(mainmenu()){
-
-	case 1:
-		conversionmode();
-		break;
-	case 2:
-			//calculationmode();
-			break;
-	case 3:
-            //graphing function to come
-			break;
-
-
-
-
-
-
-	}
-
-
-
-
-
-
-
-
-	return 0;
-}
-
-
 void carttopolconverter (){}
 
 
@@ -181,5 +146,40 @@ void NumberInput(){
 
 
 
+
+
+int main(int argc, char **argv)
+{
+
+	NumberInput();
+
+	switch(mainmenu()){
+
+	case 1:
+		conversionmode();
+		break;
+	case 2:
+			//calculationmode();
+			break;
+	case 3:
+            //graphing function to come
+			break;
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+	return 0;
+}
 
 
