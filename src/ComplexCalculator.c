@@ -46,17 +46,21 @@ int mainmenu(){
 
 
 void carttopolconverter (){
-	double length1,length2;
-	double angle1,angle2;
+	double length1;
+	double angle1;
 
-	length1 = sqrt( pow(cartesian[0][0],2) +pow(cartesian[0][1],2) );
-    length2 = sqrt( pow(cartesian[1][0],2) +pow(cartesian[1][1],2) );
+	for(int x=0;x<2;x++){
 
-    angle1 = atan((cartesian[0][1])/(cartesian[0][0]));
-    angle2 = atan((cartesian[1][1])/(cartesian[1][0]));
+	length1 = sqrt( pow(cartesian[x][0],2) +pow(cartesian[x][1],2) );
 
-    printf("%lf + %lfI = %lf angle %lf rad\n",cartesian[0][0],cartesian[0][1],length1,angle1);
-    printf("%lf + %lfI = %lf angle %lf rad\n",cartesian[1][0],cartesian[1][1],length2,angle2);
+
+    angle1 = atan((cartesian[x][1])/(cartesian[x][0]));
+
+
+    printf("%lf + %lfI = %lf angle %lf rad\n",cartesian[x][0],cartesian[x][1],length1,angle1);
+
+
+	}
     getch();
 
 
@@ -169,7 +173,29 @@ void NumberInput(){
 
      void poltocartconverter(){
 
+    	 double real1,real2;
+    	 double im1,im2;
 
+
+          for(int x=0;x<2;x++){
+
+        	  if(polar[x][2] == 0){ //use a loop to save code duplication
+
+
+
+
+
+
+        	  }
+
+
+
+
+
+
+
+
+          }
 
 
 
