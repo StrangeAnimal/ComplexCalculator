@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <complex.h>
+
 #include <math.h>
 
 double cartesian[2][2] = {{0,0},{0,0}}; //two polar and two Cartesian numbers
@@ -25,6 +25,10 @@ void conversionmode (){
 
     }
 
+
+
+
+
 int mainmenu(){
 
 
@@ -46,15 +50,17 @@ int mainmenu(){
 
 
 void carttopolconverter (){
-	double length1;
-	double angle1;
+
+	double length1 =0;
+	double angle1 =0;
 
 	for(int x=0;x<2;x++){
 
 	length1 = sqrt( pow(cartesian[x][0],2) +pow(cartesian[x][1],2) );
 
-
+     if(cartesian[x][0] != 0 ){
     angle1 = atan((cartesian[x][1])/(cartesian[x][0]));
+     }else{continue;} // to prevent div 0 error skip and start the next number
 
 
     printf("%lf + %lfI = %lf angle %lf rad\n",cartesian[x][0],cartesian[x][1],length1,angle1);
@@ -88,10 +94,9 @@ void NumberInput(){
 	scanf("%d",&cartorpol);
 
 	if(cartorpol == 1){
-		printf("Please enter the real part of the number\n");
-		scanf("%lf",&cartesian[x][0]);
-		printf("Please enter the complex part of the number\n");
-		scanf("%lf",&cartesian[x][1]);
+		printf("Please enter in form x space y for x + yI\n");
+		scanf("%lf %lf",&cartesian[x][0],&cartesian[x][1]);
+
 
 	}
 
@@ -103,20 +108,17 @@ void NumberInput(){
         if(raddeg == 1){
 
         	polar[x][2] = 0; //indicate that the number is in degrees
-        	printf("Please enter the distance from the origin\n");
-        			scanf("%lf",&polar[x][0]);
-        			printf("Please enter the angle\n");
-        	        scanf("%lf",&polar[x][1]);
+        	printf("Please enter the value x space y for x angle y\n");
+        			scanf("%lf %lf",&polar[x][0],&polar[x][1]);
+
 
 
 
         }
         if(raddeg == 2){
         	polar[x][2] = 1; //indicate that the number is in radians
-        	printf("Please enter the distance from the origin\n");
-        	scanf("%lf",&polar[x][0]);
-        	printf("Please enter the angle\n");
-        	scanf("%lf",&polar[x][1]);
+        	printf("Please enter the value x space y for x angle y\n");
+        	scanf("%lf %lf",&polar[x][0],&polar[x][1]);
 
 
 
@@ -153,18 +155,131 @@ void NumberInput(){
 
 
 
-    char calculationmode(){
-        char op;
+    void calculationmode(){
+        int mode = 0;
 
-        do{
-        printf("Enter the operator e.g + * / - or r for square root\n");
-        scanf("%c",&op);
-        }while(op != '+' || op != '*' || op != '/' || op != '-' || op != 'r');
+        printf("Press 1 to do calculations in cartesian form and 2 to calculate in polar form\n please enter the equation in the form a b operator c d for \n"
+        		"for a +bI * c + dI  or a angle b * c angle d for root enter a +bI r blank");
 
-
+        scanf("%d", &mode);
 
 
-        return op;
+
+
+
+        if(mode ==1){
+        	double real1,real2;
+        	double im1,im2;
+        	char op;
+        	printf("Please enter the calculation\n");
+        	scanf("%lf %lf %c %lf %lf",real1,im1,op,real2,im2);
+
+        	switch(op){
+
+        	case 'r':
+
+
+
+            break;
+
+        	case '+':
+
+
+
+            break;
+
+        	case '-':
+
+
+
+        	break;
+
+        	case '*':
+
+
+
+        	break;
+
+        	case '/':
+
+
+
+            break;
+
+
+
+
+
+
+
+
+
+
+
+
+        	}
+
+
+
+
+
+        }
+
+        if(mode == 2){}
+        double real1,real2;
+                	double im1,im2;
+                	char op;
+                	printf("Please enter the calculation\n");
+                	scanf("%lf %lf %c %lf %lf",real1,im1,op,real2,im2);
+
+                	switch(op){
+
+                	case 'r':
+
+
+
+                    break;
+
+                	case '+':
+
+
+
+                    break;
+
+                	case '-':
+
+
+
+                	break;
+
+                	case '*':
+
+
+
+                	break;
+
+                	case '/':
+
+
+
+                    break;
+
+
+
+
+
+
+
+
+
+
+
+
+                	}
+
+
+
+
 
 
 
