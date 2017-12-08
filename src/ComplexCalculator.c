@@ -52,12 +52,12 @@ void carttopolconverter (){
 	length1 = sqrt( pow(cartesian[0][0],2) +pow(cartesian[0][1],2) );
     length2 = sqrt( pow(cartesian[1][0],2) +pow(cartesian[1][1],2) );
 
-    angle1 = tan(cartesian[0][1]/cartesian[0][0]);
-    angle2 = tan(cartesian[1][1]/cartesian[1][0]);
+    angle1 = atan((cartesian[0][1])/(cartesian[0][0]));
+    angle2 = atan((cartesian[1][1])/(cartesian[1][0]));
 
-    printf("%lf + %lfI = %lf ∠ %lf\n",cartesian[0][0],cartesian[0][1],length1,angle1);
-    printf("%lf + %lfI = %lf ∠ %lf\n",cartesian[1][0],cartesian[1][1],length2,angle2);
-
+    printf("%lf + %lfI = %lf angle %lf rad\n",cartesian[0][0],cartesian[0][1],length1,angle1);
+    printf("%lf + %lfI = %lf angle %lf rad\n",cartesian[1][0],cartesian[1][1],length2,angle2);
+    getch();
 
 
 
