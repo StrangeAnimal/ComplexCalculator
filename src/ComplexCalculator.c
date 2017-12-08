@@ -1,21 +1,24 @@
 #include <stdio.h>
 #include <complex.h>
+#include <math.h>
 
-double cartesian[2][2]; //two polar and two Cartesian numbers
-double polar[2][3];
-
-
-
+double cartesian[2][2] = {{0,0},{0,0}}; //two polar and two Cartesian numbers
+double polar[2][3] = {{0,0,0},{0,0,0}};
 
 
-int conversionmode (){
+
+
+
+void conversionmode (){
 
     int choice;
     printf("Press one to convert from Cartesian to Polar\n");
     printf("Press two to convert from polar to Cartesian\n");
     scanf("%d",&choice);
 
-    return choice;
+    if(choice == 1)carttopolconverter(); // run convert to polar
+
+    if(choice == 2)poltocartconverter();
 
 
 
@@ -42,7 +45,29 @@ int mainmenu(){
 
 
 
-void carttopolconverter (){}
+void carttopolconverter (){
+	double length1,length2;
+	double angle1,angle2;
+
+	length1 = sqrt( pow(cartesian[0][0],2) +pow(cartesian[0][1],2) );
+    length2 = sqrt( pow(cartesian[1][0],2) +pow(cartesian[1][1],2) );
+
+    angle1 = tan(cartesian[0][1]/cartesian[0][0]);
+    angle2 = tan(cartesian[1][1]/cartesian[1][0]);
+
+    printf("%lf + %lfI = %lf ∠ %lf\n",cartesian[0][0],cartesian[0][1],length1,angle1);
+    printf("%lf + %lfI = %lf ∠ %lf\n",cartesian[1][0],cartesian[1][1],length2,angle2);
+
+
+
+
+
+
+
+
+
+
+}
 
 
 void NumberInput(){
@@ -142,6 +167,17 @@ void NumberInput(){
         }
 
 
+     void poltocartconverter(){
+
+
+
+
+
+
+
+
+
+     }
 
 
 
@@ -151,7 +187,7 @@ void NumberInput(){
 int main(int argc, char **argv)
 {
 
-	NumberInput();
+	NumberInput(); //take in the numbers
 
 	switch(mainmenu()){
 
