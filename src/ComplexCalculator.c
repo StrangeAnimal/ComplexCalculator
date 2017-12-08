@@ -173,22 +173,26 @@ void NumberInput(){
 
      void poltocartconverter(){
 
-    	 double real1,real2;
-    	 double im1,im2;
+    	 double real;
+    	 double im;
 
 
           for(int x=0;x<2;x++){
 
-        	  if(polar[x][2] == 0){ //use a loop to save code duplication
+        	  if(polar[x][2] == 0){ //if the number is in degrees
 
-
-
-
-
-
+                   real = polar[x][0] * cos((polar[x][1]/360) *(2 * M_PI));
+        		   im   = polar[x][0] * sin((polar[x][1]/360) *(2 * M_PI));
+        		   printf("%lf angle %lf = %lf + %lfI\n",polar[x][0],polar[x][1],real,im);
         	  }
 
 
+        	  if(polar[x][2] == 1){ //if the number is in radians
+
+        	                     real = polar[x][0] * cos(polar[x][1]);
+        	          		   im   = polar[x][0] * sin(polar[x][1]);
+        	          		   printf("%lf angle %lf = %lf + %lfI\n",polar[x][0],polar[x][1],real,im);
+        	          	  }
 
 
 
@@ -199,7 +203,7 @@ void NumberInput(){
 
 
 
-
+          getch();
 
 
 
