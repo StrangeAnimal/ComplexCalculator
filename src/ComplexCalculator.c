@@ -159,7 +159,7 @@ void NumberInput(){
         int mode = 0;
 
         printf("Press 1 to do calculations in cartesian form and 2 to calculate in polar form\n please enter the equation in the form a b operator c d for \n"
-        		"for a +bI * c + dI  or a angle b * c angle d for root enter a +bI r blank");
+        		"for a +bI * c + dI  or a angle b * c angle d for root enter a +bI r blank\n");
 
         scanf("%d", &mode);
 
@@ -170,9 +170,10 @@ void NumberInput(){
         if(mode ==1){
         	double real1,real2;
         	double im1,im2;
+        	double ansreal,ansim;
         	char op;
         	printf("Please enter the calculation\n");
-        	scanf("%lf %lf %c %lf %lf",real1,im1,op,real2,im2);
+        	scanf("%lf %lf %c %lf %lf",&real1,&im1,&op,&real2,&im2);
 
         	switch(op){
 
@@ -183,6 +184,10 @@ void NumberInput(){
             break;
 
         	case '+':
+        		ansreal = real1 + real2;
+        		ansim = im1 + im2;
+
+        		printf("(%lf + %lfI) + (%lf + %lfI) = (%lf + %lfI) ",real1,im1,real2,im2,ansreal,ansim);
 
 
 
@@ -190,11 +195,20 @@ void NumberInput(){
 
         	case '-':
 
+        		ansreal = real1 - real2;
+        		ansim = im1 - im2;
+
+        	    printf("(%lf + %lfI) - (%lf + %lfI) = (%lf + %lfI) ",real1,im1,real2,im2,ansreal,ansim);
+
 
 
         	break;
 
         	case '*':
+
+        		ansreal = (real1*real2)-(im1*im2);
+        		ansim = (real1*im2) + (im1*real2);
+        		printf("(%lf + %lfI) * (%lf + %lfI) = (%lf + %lfI) ",real1,im1,real2,im2,ansreal,ansim);
 
 
 
@@ -202,6 +216,9 @@ void NumberInput(){
 
         	case '/':
 
+        		ansreal = ((real1*real2) + (im1*im2))/(real2*real2 + im2*im2);
+        		ansim = (-(real1*im2) + (im1 * real2))/(real2*real2 + im2*im2);
+        		printf("(%lf + %lfI) * (%lf + %lfI) = (%lf + %lfI) ",real1,im1,real2,im2,ansreal,ansim);
 
 
             break;
@@ -225,12 +242,12 @@ void NumberInput(){
 
         }
 
-        if(mode == 2){}
+        if(mode == 2){
         double real1,real2;
                 	double im1,im2;
                 	char op;
                 	printf("Please enter the calculation\n");
-                	scanf("%lf %lf %c %lf %lf",real1,im1,op,real2,im2);
+                	scanf("%lf %lf %c %lf %lf",&real1,&im1,&op,&real2,&im2);
 
                 	switch(op){
 
@@ -264,7 +281,7 @@ void NumberInput(){
 
                     break;
 
-
+                	}
 
 
 
@@ -332,15 +349,16 @@ void NumberInput(){
 int main(int argc, char **argv)
 {
 
-	NumberInput(); //take in the numbers
+	 //take in the numbers
 
 	switch(mainmenu()){
 
 	case 1:
+		NumberInput();
 		conversionmode();
 		break;
 	case 2:
-			//calculationmode();
+			calculationmode();
 			break;
 	case 3:
             //graphing function to come
