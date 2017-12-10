@@ -168,20 +168,64 @@ void NumberInput(){
 
 
         if(mode ==1){
-        	double real1,real2;
-        	double im1,im2;
-        	double ansreal,ansim;
+        	double real1 =0,real2 =0;
+        	double im1 =0,im2 =0;
+        	double ansreal =0,ansim =0;
         	char op;
-        	printf("Please enter the calculation\n");
+        	double length1 =0;
+        	double angle1 =0;
+        	int root;
+        	printf("press one for + - * /  and 2 for root\n");
+        	scanf("%d",&root);
+
+        	if(root == 2){
+
+        		printf("Please enter the equation in the form a +bi\n");
+        		scanf("%lf %lf",&real1,&im1);
+
+
+            		length1 = sqrt( pow(real1,2) +pow(im1,2) );
+
+            		     if(real1 != 0 ){
+            		    angle1 = atan(im1/real1);
+            		     }
+            		     //converting to polar form as roots of polar form are much easier
+
+            		    // to convert to square root
+
+    					 length1 = sqrt(length1); //root the length
+    					 angle1 = angle1/2; //divide the angle by 2
+
+    					 ansreal = length1 * cos(angle1);
+    					 ansim = length1 * sin(angle1);
+    					 printf(" ROOT (%lf + %lfI) = %lf + %lfI",real1,im1,ansreal,ansim);
+
+
+
+
+
+
+
+
+
+
+
+
+
+        	}
+        	else{
+
+
+
+            printf("Please enter the equation in the form a +bi op c + di = a b op c d");
         	scanf("%lf %lf %c %lf %lf",&real1,&im1,&op,&real2,&im2);
 
         	switch(op){
 
-        	case 'r':
 
 
 
-            break;
+
 
         	case '+':
         		ansreal = real1 + real2;
@@ -297,7 +341,8 @@ void NumberInput(){
 
 
 
-
+               getch();
+        }
 
 
         }
