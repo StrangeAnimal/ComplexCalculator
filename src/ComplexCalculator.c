@@ -286,63 +286,162 @@ void NumberInput(){
 
         }
 
+
+        }
+
+
+
+
         if(mode == 2){
-        double real1,real2;
-                	double im1,im2;
-                	char op;
-                	printf("Please enter the calculation\n");
-                	scanf("%lf %lf %c %lf %lf",&real1,&im1,&op,&real2,&im2);
 
-                	switch(op){
-
-                	case 'r':
+        	int degrad;
+        	printf("Press 1 for degrees and 2 for radians\n");
+        	scanf("%d",&degrad);
 
 
 
-                    break;
-
-                	case '+':
 
 
 
-                    break;
+        	        	double length1 =0,length2 =0;
+        	        	double angle1 =0,angle2 =0;
+        	        	double anslength =0,ansangle =0;
+        	        	double ansreal,ansim;
+        	        	char op;
 
-                	case '-':
+        	        	int root;
+        	        	printf("press one for + - * /  and 2 for root\n");
+        	        	scanf("%d",&root);
 
+        	        	if(root == 2){
 
-
-                	break;
-
-                	case '*':
-
-
-
-                	break;
-
-                	case '/':
-
+        	        		printf("Please enter the equation in the form a angle b\n");
+        	        		scanf("%lf %lf",&length1,&angle1);
 
 
-                    break;
+
+
+
+        	            		    // to convert to square root
+
+        	        		if(degrad == 2){
+        	    					 length1 = sqrt(length1); //root the length
+        	    					 angle1 = angle1/2; //divide the angle by 2
+
+        	    					 ansreal = length1 * cos(angle1);
+        	    					 ansim = length1 * sin(angle1);
+        	        		}
+        	        		if(degrad == 1){
+        	        			length1 = sqrt(length1); //root the length
+        	        			angle1 = angle1/2; //divide the angle by 2
+
+        	        			 ansreal = length1 * cos((angle1/360) * (2 * M_PI));
+        	        			 ansim = length1 * sin((angle1/360) * (2 * M_PI));
+
+
+
+        	        		}
+
+        	        		anslength = sqrt( pow(ansreal,2) + pow(ansim , 2) );
+
+        	        		     if(ansreal != 0 ){
+        	        		    ansangle = atan((ansim)/(ansreal));
+        	        		     }else{} // to prevent div 0 error
+
+
+
+        	    					 printf(" ROOT (%lf angle %lf) = %lf angle %lf",length1,angle1,anslength,ansangle);
+
+
+
+
+
+
+
+
+
+
+
+
+
+        	        	}
+        	        	else{
+
+
+
+        	            printf("Please enter the equation in the form a angle b op c angle d = a b op c d");
+        	        	scanf("%lf %lf %c %lf %lf",&real1,&im1,&op,&real2,&im2);
+
+        	        	switch(op){
+
+
+
+
+
+
+        	        	case '+':
+
+
+        	        		printf("(%lf + %lfI) + (%lf + %lfI) = (%lf + %lfI) ",real1,im1,real2,im2,ansreal,ansim);
+
+
+
+        	            break;
+
+        	        	case '-':
+
+        	        		ansreal = real1 - real2;
+        	        		ansim = im1 - im2;
+
+        	        	    printf("(%lf + %lfI) - (%lf + %lfI) = (%lf + %lfI) ",real1,im1,real2,im2,ansreal,ansim);
+
+
+
+        	        	break;
+
+        	        	case '*':
+
+        	        		ansreal = (real1*real2)-(im1*im2);
+        	        		ansim = (real1*im2) + (im1*real2);
+        	        		printf("(%lf + %lfI) * (%lf + %lfI) = (%lf + %lfI) ",real1,im1,real2,im2,ansreal,ansim);
+
+
+
+        	        	break;
+
+        	        	case '/':
+
+        	        		ansreal = ((real1*real2) + (im1*im2))/(real2*real2 + im2*im2);
+        	        		ansim = (-(real1*im2) + (im1 * real2))/(real2*real2 + im2*im2);
+        	        		printf("(%lf + %lfI) * (%lf + %lfI) = (%lf + %lfI) ",real1,im1,real2,im2,ansreal,ansim);
+
+
+        	            break;
+
+
+
+
+
+
+
+
+
+
+
+
+        	        	}
+
+
+
+
 
                 	}
 
-
-
-
-
-
-
-
-
-
-                	}
-
-
+        	}
 
 
                getch();
-        }
+
 
 
         }
@@ -351,6 +450,7 @@ void NumberInput(){
      void poltocartconverter(){
 
     	 double real;
+
     	 double im;
 
 
@@ -421,9 +521,9 @@ int main(int argc, char **argv)
 
 
 
+return 0;
 
 
-	return 0;
 }
 
 
