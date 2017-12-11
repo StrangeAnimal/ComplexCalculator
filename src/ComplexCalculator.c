@@ -275,7 +275,7 @@ void calculationmode() {
 
 				ansreal = real1 + real2; //adding real and imaginary parts
 				ansim = im1 + im2;
-                printf("%lf %lf",ansreal,ansim);
+				printf("%lf %lf", ansreal, ansim);
 				anslength = sqrt(pow(ansreal, 2) + pow(ansim, 2));
 
 				if (ansreal != 0) {
@@ -396,6 +396,49 @@ void poltocartconverter() {
 
 }
 
+void graph() {
+
+	char grid[20][40];
+	int polcart =0;
+
+
+	printf("press one to enter a Cartesian form number or 2 to enter a polar form number");
+	scanf("%d",&polcart);
+
+
+	if(polcart == 1){}
+	if(polcart == 2){}
+
+
+
+
+
+
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
 int main(int argc, char **argv) {
 
 	//take in the numbers
@@ -410,7 +453,7 @@ int main(int argc, char **argv) {
 		calculationmode();
 		break;
 	case 3:
-		//graphing function to come
+		graph();
 		break;
 
 	}
