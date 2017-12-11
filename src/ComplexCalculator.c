@@ -402,8 +402,7 @@ void graph() {
 	int polcart =0;
 
 
-	printf("press one to enter a Cartesian form number or 2 to enter a polar form number");
-	scanf("%d",&polcart);
+
 
 
 	if(polcart == 1){
@@ -446,7 +445,7 @@ void graph() {
 
 
 
-}
+
 
 int main(int argc, char **argv) {
 
