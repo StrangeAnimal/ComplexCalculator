@@ -406,7 +406,16 @@ void graph() {
 	scanf("%d",&polcart);
 
 
-	if(polcart == 1){}
+	if(polcart == 1){
+
+
+
+
+
+
+
+
+	}
 	if(polcart == 2){}
 
 
