@@ -2,8 +2,8 @@
 
 #include <math.h>
 
-double cartesian[2][2] = { { 0, 0 }, { 0, 0 } }; //two polar and two Cartesian numbers
-double polar[2][3] = { { 0, 0, 0 }, { 0, 0, 0 } };
+double cartesian[1][2] = { { 0, 0 } }; //two polar and two Cartesian numbers
+double polar[1][3] = { { 0, 0, 0 } };
 
 void conversionmode() {
 
@@ -37,20 +37,19 @@ void carttopolconverter() {
 	double length1 = 0;
 	double angle1 = 0;
 
-	for (int x = 0; x < 2; x++) {
+	int x = 0;
 
-		length1 = sqrt(pow(cartesian[x][0], 2) + pow(cartesian[x][1], 2));
+	length1 = sqrt(pow(cartesian[x][0], 2) + pow(cartesian[x][1], 2));
 
-		if (cartesian[x][0] != 0) {
-			angle1 = atan((cartesian[x][1]) / (cartesian[x][0]));
-		} else {
-			continue;
-		} // to prevent div 0 error skip and start the next number
+	if (cartesian[x][0] != 0) {
+		angle1 = atan((cartesian[x][1]) / (cartesian[x][0]));
+	} else {
 
-		printf("%lf + %lfI = %lf angle %lf rad\n", cartesian[x][0],
-				cartesian[x][1], length1, angle1);
+	} // to prevent div 0 error skip and start the next number
 
-	}
+	printf("%lf + %lfI = %lf angle %lf rad\n", cartesian[x][0], cartesian[x][1],
+			length1, angle1);
+
 	getch();
 
 }
@@ -60,37 +59,35 @@ void NumberInput() {
 	int cartorpol;
 	int raddeg;
 
-	for (int x = 0; x < 2; x++) {
+	int x = 0;
+
+	printf(
+			"Press one to enter a Cartesian form number or two to enter a polar form number\n");
+	scanf("%d", &cartorpol);
+
+	if (cartorpol == 1) {
+		printf("Please enter in form x space y for x + yI\n");
+		scanf("%lf %lf", &cartesian[x][0], &cartesian[x][1]);
+
+	}
+
+	if (cartorpol == 2) {
 
 		printf(
-				"Press one to enter a Cartesian form number or two to enter a polar form number\n");
-		scanf("%d", &cartorpol);
+				"Press 1 to enter a number in degrees or 2 for a number in radians\n");
+		scanf("%d", &raddeg);
 
-		if (cartorpol == 1) {
-			printf("Please enter in form x space y for x + yI\n");
-			scanf("%lf %lf", &cartesian[x][0], &cartesian[x][1]);
+		if (raddeg == 1) {
+
+			polar[x][2] = 0; //indicate that the number is in degrees
+			printf("Please enter the value x space y for x angle y\n");
+			scanf("%lf %lf", &polar[x][0], &polar[x][1]);
 
 		}
-
-		if (cartorpol == 2) {
-
-			printf(
-					"Press 1 to enter a number in degrees or 2 for a number in radians\n");
-			scanf("%d", &raddeg);
-
-			if (raddeg == 1) {
-
-				polar[x][2] = 0; //indicate that the number is in degrees
-				printf("Please enter the value x space y for x angle y\n");
-				scanf("%lf %lf", &polar[x][0], &polar[x][1]);
-
-			}
-			if (raddeg == 2) {
-				polar[x][2] = 1; //indicate that the number is in radians
-				printf("Please enter the value x space y for x angle y\n");
-				scanf("%lf %lf", &polar[x][0], &polar[x][1]);
-
-			}
+		if (raddeg == 2) {
+			polar[x][2] = 1; //indicate that the number is in radians
+			printf("Please enter the value x space y for x angle y\n");
+			scanf("%lf %lf", &polar[x][0], &polar[x][1]);
 
 		}
 
@@ -199,8 +196,8 @@ void calculationmode() {
 		printf("Press 1 for degrees and 2 for radians\n");
 		scanf("%d", &degrad);
 
-		double length1 = 0, length2 = 0;
-		double angle1 = 0, angle2 = 0;
+		double length1 = 0, length2 = 0, length3 = 0;
+		double angle1 = 0, angle2 = 0, angle3 = 0;
 		double anslength = 0, ansangle = 0;
 		double ansreal, ansim;
 		double real1, real2, im1, im2;
@@ -218,18 +215,18 @@ void calculationmode() {
 			// to convert to square root
 
 			if (degrad == 2) {
-				length1 = sqrt(length1); //root the length
-				angle1 = angle1 / 2; //divide the angle by 2
+				length3 = sqrt(length1); //root the length
+				angle3 = angle1 / 2; //divide the angle by 2
 
-				ansreal = length1 * cos(angle1);
-				ansim = length1 * sin(angle1);
+				ansreal = length3 * cos(angle3);
+				ansim = length3 * sin(angle3);
 			}
 			if (degrad == 1) {
-				length1 = sqrt(length1); //root the length
-				angle1 = angle1 / 2; //divide the angle by 2
+				length3 = sqrt(length1); //root the length
+				angle3 = angle1 / 2; //divide the angle by 2
 
-				ansreal = length1 * cos((angle1 / 360) * (2 * M_PI));
-				ansim = length1 * sin((angle1 / 360) * (2 * M_PI));
+				ansreal = length3 * cos((angle3 / 360) * (2 * M_PI));
+				ansim = length3 * sin((angle3 / 360) * (2 * M_PI));
 
 			}
 
@@ -280,6 +277,14 @@ void calculationmode() {
 
 				if (ansreal != 0) {
 					ansangle = atan((ansim) / (ansreal));
+
+					if (ansreal < 0) {
+						ansangle = ansangle + M_PI;
+					}
+					if (ansreal > 0 && ansim < 0) {
+						ansangle = ansangle + (2 * M_PI);
+					} //corrections for tan-1
+
 				} else {
 				} // to prevent div 0 error skip and start the next number
 
@@ -322,6 +327,12 @@ void calculationmode() {
 
 				if (ansreal != 0) {
 					ansangle = atan((ansim) / (ansreal));
+					if (ansreal < 0) {
+						ansangle = ansangle + M_PI;
+						if (ansreal > 0 && ansim < 0) {
+							ansangle = ansangle + (2 * M_PI);
+						}
+					}
 				} else {
 				} // to prevent div 0 error skip and start the next number
 
@@ -372,24 +383,22 @@ void poltocartconverter() {
 
 	double im;
 
-	for (int x = 0; x < 2; x++) {
+	int x = 0;
 
-		if (polar[x][2] == 0) { //if the number is in degrees
+	if (polar[x][2] == 0) { //if the number is in degrees
 
-			real = polar[x][0] * cos((polar[x][1] / 360) * (2 * M_PI));
-			im = polar[x][0] * sin((polar[x][1] / 360) * (2 * M_PI));
-			printf("%lf angle %lf = %lf + %lfI\n", polar[x][0], polar[x][1],
-					real, im);
-		}
+		real = polar[x][0] * cos((polar[x][1] / 360) * (2 * M_PI));
+		im = polar[x][0] * sin((polar[x][1] / 360) * (2 * M_PI));
+		printf("%lf angle %lf = %lf + %lfI\n", polar[x][0], polar[x][1], real,
+				im);
+	}
 
-		if (polar[x][2] == 1) { //if the number is in radians
+	if (polar[x][2] == 1) { //if the number is in radians
 
-			real = polar[x][0] * cos(polar[x][1]);
-			im = polar[x][0] * sin(polar[x][1]);
-			printf("%lf angle %lf = %lf + %lfI\n", polar[x][0], polar[x][1],
-					real, im);
-		}
-
+		real = polar[x][0] * cos(polar[x][1]);
+		im = polar[x][0] * sin(polar[x][1]);
+		printf("%lf angle %lf = %lf + %lfI\n", polar[x][0], polar[x][1], real,
+				im);
 	}
 
 	getch();
@@ -399,53 +408,16 @@ void poltocartconverter() {
 void graph() {
 
 	char grid[20][40];
-	int polcart =0;
+	int polcart = 0;
 
-
-
-
-
-	if(polcart == 1){
-
-
-
-
-
-
-
+	if (polcart == 1) {
 
 	}
-	if(polcart == 2){}
-
-
-
-
-
-
-
-
-
-
-
+	if (polcart == 2) {
 
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 int main(int argc, char **argv) {
 
