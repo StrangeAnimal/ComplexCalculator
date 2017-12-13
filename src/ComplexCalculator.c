@@ -30,7 +30,7 @@ int mainmenu() {
 
 	printf("Press 1 to enter conversion mode\n");
 	printf("Press 2 to enter calculation mode\n");
-	printf("Press 3 to enter graphing mode\n");
+
 	scanf("%d", &option);
 	return option;
 
@@ -103,8 +103,7 @@ void calculationmode() {
 	int mode = 0;
 
 	printf(
-			"Press 1 to do calculations in cartesian form and 2 to calculate in polar form\n please enter the equation in the form a b operator c d for \n"
-					"for a +bI * c + dI  or a angle b * c angle d for root enter a +bI r blank\n");
+			"Press 1 to do calculations in cartesian form and 2 to calculate in polar form\n");
 
 	scanf("%d", &mode);
 
@@ -116,7 +115,7 @@ void calculationmode() {
 		double length1 = 0;
 		double angle1 = 0;
 		int root;
-		printf("press one for + - * /  and 2 for root\n");
+		printf("press one for (+ - * /)  and 2 for root\n");
 		scanf("%d", &root);
 
 		if (root == 2) {
@@ -144,7 +143,7 @@ void calculationmode() {
 		} else {
 
 			printf(
-					"Please enter the equation in the form a +bi op c + di = a b op c d");
+					"Please enter the equation in the form a +bi operator c + di = a b operator c d");
 			scanf("%lf %lf %c %lf %lf", &real1, &im1, &op, &real2, &im2);
 
 			switch (op) {
@@ -409,19 +408,7 @@ void poltocartconverter() {
 
 }
 
-void graph() {
 
-	char grid[20][40];
-	int polcart = 0;
-
-	if (polcart == 1) {
-
-	}
-	if (polcart == 2) {
-
-	}
-
-}
 
 int main(int argc, char **argv) {
 
