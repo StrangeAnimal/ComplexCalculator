@@ -1,11 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <ncurses.h>
+
 
 double cartesian[1][2] = { { 0, 0 } }; //two polar and two Cartesian numbers
 double polar[1][3] = { { 0, 0, 0 } };
 char v;
+
+char getch(void)
+{
+  return getch_(0);
+}
+
 void conversionmode() {
 
 	int choice;
