@@ -5,7 +5,7 @@
 
 double cartesian[1][2] = { { 0, 0 } }; //two polar and two Cartesian numbers
 double polar[1][3] = { { 0, 0, 0 } };
-char v;
+int v;
 
 
 
@@ -54,7 +54,7 @@ void carttopolconverter() {
 	printf("%lf + %lfI = %lf angle %lf rad\n", cartesian[x][0], cartesian[x][1],
 			length1, angle1);
 
-	getch();
+	v = getchar();
 
 }
 
@@ -377,7 +377,7 @@ void calculationmode() {
 
 	}
 
-	getch();
+	v = getchar();
 
 }
 
@@ -405,7 +405,7 @@ void poltocartconverter() {
 				im);
 	}
 
-	getch();
+	v = getchar();
 
 }
 
