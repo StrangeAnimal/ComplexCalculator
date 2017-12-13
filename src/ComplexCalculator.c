@@ -143,7 +143,7 @@ void calculationmode() {
 		} else {
 
 			printf(
-					"Please enter the equation in the form a +bi operator c + di = a b operator c d");
+					"Please enter the equation in the form a +bi operator c + di = a b operator c d\n");
 			scanf("%lf %lf %c %lf %lf", &real1, &im1, &op, &real2, &im2);
 
 			switch (op) {
