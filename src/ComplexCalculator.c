@@ -3,23 +3,20 @@
 #include <math.h>
 
 
-double cartesian[1][2] = { { 0, 0 } }; //two polar and two Cartesian numbers
+double cartesian[1][2] = { { 0, 0 } }; //polar and two Cartesian numbers
 double polar[1][3] = { { 0, 0, 0 } };
-int v;
+int cartesianorpolar;
 
 
 
 void conversionmode() {
 
-	int choice;
-	printf("Press one to convert from Cartesian to Polar\n");
-	printf("Press two to convert from polar to Cartesian\n");
-	scanf("%d", &choice);
 
-	if (choice == 1)
+
+	if (cartesianorpolar == 0)
 		carttopolconverter(); // run convert to polar
 
-	if (choice == 2)
+	if (cartesianorpolar == 1)
 		poltocartconverter();
 
 }
@@ -54,7 +51,7 @@ void carttopolconverter() {
 	printf("%lf + %lfI = %lf angle %lf rad\n", cartesian[x][0], cartesian[x][1],
 			length1, angle1);
 
-	v = getchar();
+
 
 }
 
@@ -72,10 +69,12 @@ void NumberInput() {
 	if (cartorpol == 1) {
 		printf("Please enter in form x space y for x + yI\n");
 		scanf("%lf %lf", &cartesian[x][0], &cartesian[x][1]);
+		cartesianorpolar =0;
 
 	}
 
 	if (cartorpol == 2) {
+		cartesianorpolar =1;
 
 		printf(
 				"Press 1 to enter a number in degrees or 2 for a number in radians\n");
@@ -275,7 +274,7 @@ void calculationmode() {
 
 				ansreal = real1 + real2; //adding real and imaginary parts
 				ansim = im1 + im2;
-				printf("%lf %lf", ansreal, ansim);
+
 				anslength = sqrt(pow(ansreal, 2) + pow(ansim, 2));
 
 				if (ansreal != 0) {
@@ -376,7 +375,7 @@ void calculationmode() {
 
 	}
 
-	v = getchar();
+
 
 }
 
@@ -404,7 +403,7 @@ void poltocartconverter() {
 				im);
 	}
 
-	v = getchar();
+
 
 }
 
