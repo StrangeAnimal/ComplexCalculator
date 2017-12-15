@@ -258,8 +258,8 @@ void calculationmode() {
 
 					real1 = length1 * cos((angle1 / 360) * (2 * M_PI));
 					im1 = length1 * sin((angle1 / 360) * (2 * M_PI));
-					real2 = length1 * cos((angle2 / 360) * (2 * M_PI));
-					im2 = length1 * sin((angle2 / 360) * (2 * M_PI));
+					real2 = length2 * cos((angle2 / 360) * (2 * M_PI));
+					im2 = length2 * sin((angle2 / 360) * (2 * M_PI));
 
 				}
 
@@ -308,8 +308,8 @@ void calculationmode() {
 
 					real1 = length1 * cos((angle1 / 360) * (2 * M_PI));
 					im1 = length1 * sin((angle1 / 360) * (2 * M_PI));
-					real2 = length1 * cos((angle2 / 360) * (2 * M_PI));
-					im2 = length1 * sin((angle2 / 360) * (2 * M_PI));
+					real2 = length2 * cos((angle2 / 360) * (2 * M_PI));
+					im2 = length2 * sin((angle2 / 360) * (2 * M_PI));
 
 				}
 
